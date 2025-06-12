@@ -14,7 +14,7 @@ pipeline{
         }
         stage('install dependencies'){
             steps{
-                bat'npm install'
+                bat'npm install -g serve'
             }
         }
         stage('start'){
