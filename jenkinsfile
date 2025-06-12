@@ -19,7 +19,7 @@ pipeline{
         }
         stage('start') {
             steps {
-                bat 'npm react-scripts start'
+                bat 'npm run start'
             }
         }
         stage('deploy') {
