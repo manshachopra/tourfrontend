@@ -17,14 +17,17 @@ pipeline{
                 bat'npm install'
             }
         }
-        stage('start') {
+        stage('Build for Production') {
             steps {
-                bat 'npm run start'
+                // Prevents CI warnings from aborting build
+                bat 'set CI=false && npm run build'
             }
         }
-        stage('deploy') {
+
+        stage('Serve Build in Background') {
             steps {
-                bat 'npm run build'
+                // Run production server in background
+                bat 'start /B serve -s build -l 3000 > serve-log.txt 2>&1'
             }
         }
     }
