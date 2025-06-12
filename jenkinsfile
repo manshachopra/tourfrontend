@@ -1,0 +1,39 @@
+pipeline{
+    agent any
+    environment{
+        NODE_ENV='development'
+    }
+    tools{
+        nodejs'23.11.0'
+    }
+    stages{
+        stage('checkout repository'){
+            steps{
+            git branch:'main',url:'https://github.com/manshachopra/tourfrontend.git'
+            }
+        }
+        stage('install dependencies'){
+            steps{
+                bat'npm install'
+            }
+        }
+        stage('start'){
+            steps{
+                bat'npm start'
+            }
+        }
+        stage('deploy'){
+            steps{
+                bat'npm run build'
+            }
+        }
+    }
+    post{
+        success{
+            echo'pipeline completed successfully'
+        }
+        failure{
+            echo'something went wrong please check for errors'
+        }
+    }
+}
