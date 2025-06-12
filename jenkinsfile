@@ -19,14 +19,9 @@ pipeline{
         }
         stage('deploy') {
             steps {
-                bat 'set CI=false && npm run build'
+                bat 'npm run build'
             }
         }
-        stage('Serve Production Build in Background') {
-            steps {
-                bat 'start /B serve -s build -l 3000 > serve-log.txt 2>&1'
-            }
-        } 
     }
     post{
         success{
