@@ -24,7 +24,7 @@ pipeline{
         }
         stage('deploy') {
             steps {
-                bat 'npm react-scripts build'
+                bat 'npm run build'
             }
         }
     }
