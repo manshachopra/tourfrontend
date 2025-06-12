@@ -22,6 +22,11 @@ pipeline{
                 bat'npm start'
             }
         }
+        stage('deploy'){
+            steps{
+                bat'npm run build'
+            }
+        }
     }
     post{
         success{
