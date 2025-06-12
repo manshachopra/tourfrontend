@@ -14,19 +14,19 @@ pipeline{
         }
         stage('install dependencies'){
             steps{
-                bat'npm install -g serve'
+                bat'npm install'
             }
         }
-        stage('start'){
-            steps{
-                bat'npm start'
+        stage('Build React App') {
+            steps {
+                bat 'npm run build'
             }
         }
-        stage('deploy'){
-            steps{
-                bat'npm run build'
+        stage('Serve Production Build in Background') {
+            steps {
+                bat 'start /B serve -s build -l 3000 > serve-log.txt 2>&1'
             }
-        }
+        } 
     }
     post{
         success{
