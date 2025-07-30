@@ -13,7 +13,7 @@ pipeline{
             }
         }
 
-        stag('npm version'){
+        stage('npm version'){
             steps{
                 bat'npm --version'
             }
