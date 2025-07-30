@@ -12,6 +12,12 @@ pipeline{
             git branch:'main',url:'https://github.com/manshachopra/tourfrontend.git'
             }
         }
+
+        stag('npm version'){
+            steps{
+                bat'npm --version'
+            }
+        }
         stage('install dependencies'){
             steps{
                 bat'npm install'
